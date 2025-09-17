@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menghitung Luas Bangun Datar</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Tugas Pertemuan ke-1 Javascript</h1>
+    <p style="text-align: center;">Kalkulator Luas Bangun Datar</p>
+
+    <script>
+        // --- Menghitung Luas Persegi Panjang ---
+        // Mendefinisikan variabel untuk panjang dan lebar. 
+        const panjangPersegiPanjang = 15;
+        const lebarPersegiPanjang = 50;
+
+        // Proses: Menghitung luas dengan mengalikan panjang dan lebar.
+        const luasPersegiPanjang = panjangPersegiPanjang * lebarPersegiPanjang;
+        
+        // Output: Menampilkan hasil perhitungan luas persegi panjang 
+        document.write("<h3>1. Luas Persegi Panjang</h3>");
+        document.write("Panjang: " + panjangPersegiPanjang + "<br/>");
+        document.write("Lebar: " + lebarPersegiPanjang + "<br/>");
+        document.write("<b>Luasnya adalah: " + luasPersegiPanjang + "</b><br/><br/>");
+
+
+        // --- Menghitung Luas Bujur Sangkar (Persegi) ---
+        // Mendefinisikan variabel untuk panjang sisi. 
+        const sisiBujurSangkar = 7;
+
+        // Proses: Menghitung luas dengan mengalikan sisi dengan sisi (sisi * sisi).
+        const luasBujurSangkar = sisiBujurSangkar * sisiBujurSangkar;
+
+        // Output: Menampilkan hasil perhitungan luas bujur sangkar 
+        document.write("<h3>2. Luas Bujur Sangkar</h3>");
+        document.write("Sisi: " + sisiBujurSangkar + "<br/>");
+        document.write("<b>Luasnya adalah: " + luasBujurSangkar + "</b><br/><br/>");
+
+
+        // --- Menghitung Luas Segitiga ---
+        // Mendefinisikan variabel untuk alas dan tinggi. 
+        const alasSegitiga = 9;
+        const tinggiSegitiga = 8;
+
+        // Proses: Menghitung luas dengan rumus 0.5 * alas * tinggi.
+        const luasSegitiga = 0.5 * alasSegitiga * tinggiSegitiga;
+
+        // Output: Menampilkan hasil perhitungan luas segitiga 
+        document.write("<h3>3. Luas Segitiga</h3>");
+        document.write("Alas: " + alasSegitiga + "<br/>");
+        document.write("Tinggi: " + tinggiSegitiga + "<br/>");
+        document.write("<b>Luasnya adalah: " + luasSegitiga + "</b><br/><br/>");
+    </script>
+</body>
+</html>
