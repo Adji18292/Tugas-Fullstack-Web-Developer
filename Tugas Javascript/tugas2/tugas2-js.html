@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Data Rincian Gaji Pegawai</h1>
+
+    <table id="tabel-pegawai">
+        <thead>
+            <tr>
+                <th>Keterangan</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Nama Pegawai</td>
+                <td id="nama"></td>
+            </tr>
+            <tr>
+                <td>Umur</td>
+                <td id="umur"></td>
+            </tr>
+            <tr>
+                <td>Jabatan</td>
+                <td id="jabatan"></td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td id="status"></td>
+            </tr>
+            <tr>
+                <td>Gaji Pokok</td>
+                <td id="gapok"></td>
+            </tr>
+            <tr>
+                <td>Tunjangan Jabatan</td>
+                <td id="tunjangan_jabatan"></td>
+            </tr>
+            <tr>
+                <td>BPJS</td>
+                <td id="bpjs"></td>
+            </tr>
+            <tr>
+                <td>Tunjangan Keluarga</td>
+                <td id="tunjangan_keluarga"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total Gaji</th>
+                <th id="total_gaji"></th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        const pegawai = {
+            nama: "Dodi prayodi",
+            umur: 25,
+            jabatan: "Manajer",
+            status: "Menikah"
+        };
+
+        let gajiPokok;
+        const jabatan = pegawai.jabatan.toLowerCase();
+
+        if (jabatan === "manajer") {
+            gajiPokok = 15000000;
+        } else if (jabatan === "asisten manajer") {
+            gajiPokok = 10000000;
+        } else {
+            gajiPokok = 5000000;
+        }
+
+        const tunjanganJabatan = 0.15 * gajiPokok;
+        const bpjs = 0.10 * gajiPokok;
+        const tunjanganKeluarga = (pegawai.status.toLowerCase() === "menikah") ? (0.20 * gajiPokok) : 0;
+        const totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+        function formatRupiah(angka) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(angka);
+        }
+
+        document.getElementById("nama").innerHTML = pegawai.nama;
+        document.getElementById("umur").innerHTML = pegawai.umur + " tahun";
+        document.getElementById("jabatan").innerHTML = pegawai.jabatan;
+        document.getElementById("status").innerHTML = pegawai.status;
+        document.getElementById("gapok").innerHTML = formatRupiah(gajiPokok);
+        document.getElementById("tunjangan_jabatan").innerHTML = formatRupiah(tunjanganJabatan);
+        document.getElementById("bpjs").innerHTML = formatRupiah(bpjs);
+        document.getElementById("tunjangan_keluarga").innerHTML = formatRupiah(tunjanganKeluarga);
+        document.getElementById("total_gaji").innerHTML = formatRupiah(totalGaji);
+    </script>
+
+    <footer>
+        <p><b>Adji Setyawan Saputra</b> - Fullstack Web Developer</p>
+        <p>Tugas Pertemuan ke-2 Javascript</p>
+    </footer>
+</body>
+</html>
