@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistem Manajemen Transportasi</title>
+</head>
+<body bgcolor="#E6E6FA">
+    <h1 style="text-align: center;">Daftar Pelanggan Penyewa Kendaraan</h1>
+    <form style="text-align: center;" id="formPelanggan">
+        <input type="text" id="nama" placeholder="Nama" required>
+        <input type="text" id="nomorTelepon" placeholder="Nomor Telepon" required>
+        <input type="text" id="kendaraanDisewa" placeholder="Kendaraan Disewa" required>
+        <button type="submit">Sewa Kendaraan</button>
+    </form>
+    <p>Daftar Pelanggan Aktif :</p>
+    <ul id="daftarPelanggan"></ul>
+
+    <script>
+        // Class Pelanggan
+        class Pelanggan {
+            constructor(nama, nomorTelepon, kendaraanDisewa) {
+                this.nama = nama;
+                this.nomorTelepon = nomorTelepon;
+                this.kendaraanDisewa = kendaraanDisewa;
+            }
+        }
+
+        // Manajemen daftar pelanggan
+        class ManajemenPelanggan {
+            constructor() {
+                this.pelangganList = [];
+            }
+
+            tambahPelanggan(pelanggan) {
+                this.pelangganList.push(pelanggan);
+            }
+
+            getDaftarPelanggan() {
+                return this.pelangganList;
+            }
+        }
+
+        const manajemen = new ManajemenPelanggan();
+
+        // Event form submit
+        document.getElementById('formPelanggan').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nama = document.getElementById('nama').value.trim();
+            const nomorTelepon = document.getElementById('nomorTelepon').value.trim();
+            const kendaraanDisewa = document.getElementById('kendaraanDisewa').value.trim();
+
+            // Validasi input tidak boleh kosong
+            if (!nama || !nomorTelepon || !kendaraanDisewa) {
+                alert("Semua data harus diisi. Silakan coba lagi.");
+                return;
+            }
+
+            // Validasi nama pelanggan tidak boleh mengandung angka
+            if (/\d/.test(nama)) {
+                alert("Input tidak valid. Nama pelanggan tidak boleh mengandung angka.");
+                return;
+            }
+
+            // Validasi nomor telepon harus berupa angka
+            if (!/^\d+$/.test(nomorTelepon)) {
+                alert("Input tidak valid. Nomor telepon harus berupa angka.");
+                return;
+            }
+
+            // Validasi nama kendaraan tidak boleh mengandung angka
+            if (/\d/.test(kendaraanDisewa)) {
+                alert("Input tidak valid. Nama kendaraan tidak boleh mengandung angka.");
+                return;
+            }
+
+            const pelangganBaru = new Pelanggan(nama, nomorTelepon, kendaraanDisewa);
+            manajemen.tambahPelanggan(pelangganBaru);
+
+            tampilkanDaftarPelanggan();
+            this.reset();
+        });
+
+        // Tampilkan daftar pelanggan
+        function tampilkanDaftarPelanggan() {
+            const daftar = document.getElementById('daftarPelanggan');
+            daftar.innerHTML = '';
+            manajemen.getDaftarPelanggan().forEach((p, i) => {
+                const li = document.createElement('li');
+                li.textContent = `${i+1}. ${p.nama} (${p.nomorTelepon}) - ${p.kendaraanDisewa}`;
+                daftar.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
