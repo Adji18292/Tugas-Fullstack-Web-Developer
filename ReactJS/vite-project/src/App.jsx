@@ -63,7 +63,7 @@ function App() {
       <div className="col d-flex align-items-start">
         <div className="text-center w-100">
           <img src={contactImage} className="rounded-circle mb-3" alt="Team Member 2" width="140" height="140" />
-          <h4 className="fw-bold mb-0">Adji Saputra</h4>
+          <h4 className="fw-bold mb-0">Adji Setyawan Saputra</h4>
           <p>UI/UX Designer</p>
         </div>
       </div>
